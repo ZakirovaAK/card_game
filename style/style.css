@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Game';
+    src: url(stratosskyengweb-regular.woff2) format("woff2");
+}
+
+body {
+    padding: 0;
+	margin: 0;
+	border: 0;
+    font-family: Game, Arial;
+    background-color: #1B5583;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* align-content: center; */
+}
+
+.screen {
+    height: 50vh;
+    width: 50vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    background-color:#87CEFA;
+    border-radius: 8px;
+}
+
+.form_level {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+
+    color: #1B5583;
+}
+
+.level_header {
+    font-size: 32px;
+    width: 150px;
+    text-align: center;
+}
+
+.btn_level {
+    color: white;
+    width: 150px;
+    height: 40px;
+    border: #32CD32;
+    border-radius: 8px;
+    background-color: #32CD32;
+}
+
+.btn_level_select {
+    background: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    font-size: 64px;
+    color: #1B5583;
+    border: 3px solid #fff;
+    margin: 10px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer; */
+}
+
+.btn_level_select:hover {
+    border: 5px solid #1B5583;
+}
+
+.btn_level_select--active {
+    border: 5px solid #1B5583;
+}
+
+.element {
+    height: 16vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
