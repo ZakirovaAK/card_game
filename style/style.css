@@ -93,6 +93,12 @@ body {
     align-items: center;
 }
 
+.elements__box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
 .game_screen_field {
     display: flex;
     flex-wrap: wrap;
