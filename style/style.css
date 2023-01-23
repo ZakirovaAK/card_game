@@ -1,21 +1,20 @@
 @charset "UTF-8";
 @font-face {
 	font-family: Game;
-	src: url(stratosskyengweb-regular.woff2) format('woff2');
+	src: url('stratosskyengweb-regular.woff2') format('woff2');
 }
 
 body {
 	padding: 0;
 	margin: 0;
 	border: 0;
-	font-family: Game, Arial;
+	font-family: Game, Arial, Helvetica, sans-serif;
 	background-color: #1b5583;
 }
 
 .container {
 	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	flex-flow: column wrap;
 }
 
 .screen {
@@ -33,8 +32,7 @@ body {
 
 .form_level {
 	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	flex-flow: column wrap;
 	align-items: center;
 	color: #1b5583;
 }
@@ -60,8 +58,7 @@ body {
 	margin: 10px;
 	box-sizing: border-box;
 	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	flex-flow: column wrap;
 	align-items: center;
 	justify-content: center;
 }
@@ -91,17 +88,15 @@ body {
 }
 
 .elements__box {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+	display: flex;
+	flex-flow: column wrap;
 }
 
 .game_screen_field {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 10px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: flex-start;
+	padding-left: 10px;
 }
 
 .hidden__block {
