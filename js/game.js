@@ -1,4 +1,10 @@
 const PAIRS = [3, 6, 9];
+let startTimer;
+let moves = 0; // кол-во угаданных пар карт
+let hasFlippedCard = false; // перевернутая карта?
+let lockBoard = false; // ?
+let firstCard, secondCard;
+let timeCode;
 
 function renderScreenGame() {
 	const app = emptyScreen();
@@ -45,17 +51,16 @@ function gameWatch() {
 	const gameTimer = document.querySelector('.timer__degits');
 
 	let milliseconds = 0;
-	let startTimer;
 
 	startTimer = setInterval(() => {
 		milliseconds += 1000;
 
 		let dateTimer = new Date(milliseconds);
-
-		gameTimer.innerHTML =
+		timeCode =
 			dateTimer.getUTCMinutes() +
 			':' +
 			('0' + dateTimer.getUTCSeconds()).slice(-2);
+		gameTimer.innerHTML = timeCode;
 	}, 1000);
 }
 
@@ -96,19 +101,89 @@ function renderCards() {
 		cardsWrapper.appendChild(templateEngine(card));
 	});
 
-	// let levelElems = document.querySelectorAll(".card__item");
-	// levelElems.forEach((item) => {
-	//   item.addEventListener("click", checkCard);
-	// });
+	let playCards = document.querySelectorAll('.card__item');
+	playCards.forEach((playCard) => {
+		playCard.addEventListener('click', flipCard);
+	});
 }
 
-// function checkCard(e) {
-//   // открываем карту
-//   console.log(e.target);
-//   const childFront = e.target.firstChild;
-//   debugger;
+function coupOneCard(children) {
+	// переворачиваем карту
+	for (let index = 0; index < children.length; index++) {
+		const element = children[index];
+		const childClassList = [...element.classList];
+		if (childClassList.includes('card__item-front')) {
+			element.classList.remove('card__item_hidden');
+		} else if (childClassList.includes('card__item-back')) {
+			element.classList.add('card__item_hidden');
+		}
+	}
+}
 
-// }
+function flipCard() {
+	// if (lockBoard) return;
+	if (this === firstCard) return;
+
+	const children = this.childNodes;
+	// переворачиваем одну карту
+	coupOneCard(children);
+
+	if (!hasFlippedCard) {
+		hasFlippedCard = true;
+		firstCard = this;
+		return;
+	}
+
+	secondCard = this;
+
+	checkCard();
+}
+
+function checkCard() {
+	// console.log('checkCard');
+	// console.log(firstCard.dataset.id);
+	// console.log(secondCard.dataset.id);
+
+	if (firstCard.dataset.id === secondCard.dataset.id) {
+		disableCards();
+		return;
+	}
+
+	// остановка таймера!!!!
+	clearInterval(startTimer);
+	// сохранение времени
+	window.application.gameTime = timeCode;
+	console.log('вы проиграли');
+	// looseGame(); // Окошко вы проиграли
+	moves = 0;
+	// Экран проигрыша
+	window.application.screens['lose'] = renderScreenLose;
+	window.application.renderScreen('lose');
+}
+
+function disableCards() {
+	// для firstCard и secondCard убираем подписку на click через метод
+	firstCard.removeEventListener('click', flipCard);
+	secondCard.removeEventListener('click', flipCard);
+	console.log('disable');
+	//обнуляем карты
+	hasFlippedCard = false;
+	firstCard = undefined;
+	secondCard = undefined;
+	moves += 1;
+	if (moves === PAIRS[window.application.level - 1]) {
+		// остановка таймера!!!!
+		clearInterval(startTimer);
+		console.log('вы выйграли!!!');
+		// вы выйграли
+		moves = 0;
+		// сохранение времени
+		window.application.gameTime = timeCode;
+		// Экран выйгрыша
+		window.application.screens['win'] = renderScreenWin;
+		window.application.renderScreen('win');
+	}
+}
 
 function shuffleCards(array) {
 	for (let i = array.length - 1; i > 0; i--) {

@@ -2,6 +2,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '6C',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -25,6 +28,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '6D',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -48,6 +54,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '6H',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -71,6 +80,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '6S',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -94,6 +106,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '7C',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -117,6 +132,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '7D',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -140,6 +158,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '7H',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -163,6 +184,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '7S',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -186,6 +210,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '8C',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -209,6 +236,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '8D',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -232,6 +262,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '8H',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -255,6 +288,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '8S',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -278,6 +314,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '9C',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -301,6 +340,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '9D',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -324,6 +366,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '9H',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -347,6 +392,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': '9S',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -370,6 +418,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'AC',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -393,6 +444,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'AD',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -416,6 +470,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'AH',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -439,6 +496,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'AS',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -462,6 +522,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'JC',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -485,6 +548,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'JD',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -508,6 +574,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'JH',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -531,6 +600,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'JS',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -554,6 +626,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'KC',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -577,6 +652,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'KD',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -600,6 +678,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'KH',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -623,6 +704,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'KS',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -646,6 +730,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'QC',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -669,6 +756,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'QD',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -692,6 +782,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'QH',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -715,6 +808,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'QS',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -738,6 +834,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'TC',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -761,6 +860,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'TD',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -784,6 +886,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'TH',
+		},
 		content: [
 			{
 				tag: 'img',
@@ -807,6 +912,9 @@ const cards = [
 	{
 		tag: 'div',
 		cls: 'card__item',
+		attrs: {
+			'data-id': 'TS',
+		},
 		content: [
 			{
 				tag: 'img',

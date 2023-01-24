@@ -17,6 +17,7 @@ window.application = {
 	},
 	timers: [],
 	level: '',
+	gameTime: '',
 };
 
 // Экран выбора уровня

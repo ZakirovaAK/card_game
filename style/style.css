@@ -37,10 +37,23 @@ body {
 	color: #1b5583;
 }
 
-.level_header {
+.form_result-game {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+.header {
 	font-size: 32px;
-	width: 150px;
 	text-align: center;
+}
+
+.header_level {
+	width: 150px;
+}
+
+.header_result-game {
+	color: #1b5583;
 }
 
 .level-input {
