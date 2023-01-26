@@ -1,4 +1,6 @@
-function renderScreenWin() {
+import { emptyScreen } from './start-screen';
+
+export function renderScreenWin() {
 	const app = emptyScreen();
 
 	const section = document.createElement('section');

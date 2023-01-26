@@ -1,7 +1,8 @@
+import { renderScreenGame } from './game.js';
 /* eslint-disable no-unused-vars */
 const LEVELS = ['easy_level', 'medium_level', 'hard_level'];
 
-function emptyScreen() {
+export function emptyScreen() {
 	// очистка экрана
 	const app = document.querySelector('.container');
 	app.textContent = '';
@@ -26,7 +27,7 @@ function renderBlockLevels(levelsBox) {
 	}
 }
 
-function renderScreenGameLevel() {
+export function renderScreenGameLevel() {
 	const app = emptyScreen();
 
 	const section = document.createElement('section');
@@ -67,7 +68,8 @@ function renderScreenGameLevel() {
 		if (window.application.level) {
 			// загрузка экрана игры
 			window.application.screens['game'] = renderScreenGame;
-			window.application.renderScreen('game');
+			renderScreenGame();
+			// window.application.renderScreen('game');
 		} else {
 			// вывод сообщения о том, что нужно выбрать уровень игры
 			errorBlock.classList.remove('hidden__block');
