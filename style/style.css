@@ -1,112 +1,196 @@
+@charset "UTF-8";
 @font-face {
-    font-family: 'Game';
-    src: url(stratosskyengweb-regular.woff2) format("woff2");
+	font-family: Game;
+	src: url('stratosskyengweb-regular.woff2') format('woff2');
 }
 
 body {
-    padding: 0;
+	padding: 0;
 	margin: 0;
 	border: 0;
-    font-family: Game, Arial;
-    background-color: #1B5583;
+	font-family: Game, Arial, Helvetica, sans-serif;
+	background-color: #1b5583;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* align-content: center; */
+	display: flex;
+	flex-flow: column wrap;
 }
 
 .screen {
-    height: 50vh;
-    width: 50vh;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-
-    background-color:#87CEFA;
-    border-radius: 8px;
+	height: 50vh;
+	width: 50vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	background-color: #87cefa;
+	border-radius: 8px;
 }
 
 .form_level {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-
-    color: #1B5583;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	color: #1b5583;
 }
 
-.level_header {
-    font-size: 32px;
-    width: 150px;
-    text-align: center;
+.form_result-game {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+.header {
+	font-size: 32px;
+	text-align: center;
+}
+
+.header_level {
+	width: 150px;
+}
+
+.header_result-game {
+	color: #1b5583;
 }
 
 .level-input {
-    display: none;
+	display: none;
 }
 
 .level-label {
-    background: #fff;
-    width: 100px;
-    height: 100px;
-    border-radius: 12px;
-    font-size: 64px;
-    color: #1B5583;
-    border: 3px solid #fff;
-    margin: 10px;
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+	background: #fff;
+	width: 100px;
+	height: 100px;
+	border-radius: 12px;
+	font-size: 64px;
+	color: #1b5583;
+	border: 3px solid #fff;
+	margin: 10px;
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
 }
 
 .level-label:hover {
-    border: 5px solid #1B5583;
+	border: 5px solid #1b5583;
 }
 
 .btn_level {
-    color: white;
-    width: 150px;
-    height: 40px;
-    border: #32CD32;
-    border-radius: 8px;
-    background-color: #32CD32;
+	color: white;
+	width: 150px;
+	height: 40px;
+	border: #32cd32;
+	border-radius: 8px;
+	background-color: #32cd32;
 }
 
 .level_label--active {
-    border: 5px solid #1B5583;
+	border: 5px solid #1b5583;
 }
 
 .element {
-    height: 16vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+	height: 16vh;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 
 .elements__box {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+	display: flex;
+	flex-flow: column wrap;
 }
 
 .game_screen_field {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 10px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: flex-start;
+	padding-left: 10px;
 }
 
 .hidden__block {
-    display: none;
+	display: none;
+}
+
+.game__screen {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	gap: 35px;
+}
+
+.game__screen-header {
+	align-items: center;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+}
+
+.game__screen-timer {
+	display: flex;
+	flex-direction: column;
+}
+
+.timer__titles {
+	display: flex;
+	font-size: 16px;
+	justify-content: flex-end;
+}
+
+.timer__title {
+	width: 50%;
+	text-align: right;
+	padding-right: 8px;
+}
+
+.timer__degits {
+	font-size: 64px;
+}
+
+.cards__wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+}
+
+.card__item {
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.card__item:hover {
+	transform: scale(1.1);
+}
+
+.card__item_hidden {
+	display: none;
+}
+
+.button {
+	background-color: #7ac100;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	width: 246px;
+	height: 50px;
+	color: #fff;
+	font-size: 24px;
+	line-height: 32px;
+	transition: all 0.3s;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.button:hover {
+	background: #4a7501;
 }
