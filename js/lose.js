@@ -1,4 +1,6 @@
-function renderScreenLose() {
+import { emptyScreen } from './start-screen';
+
+export function renderScreenLose() {
 	const app = emptyScreen();
 
 	const section = document.createElement('section');

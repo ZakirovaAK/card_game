@@ -1,12 +1,17 @@
+import { emptyScreen } from './start-screen';
+import { templateEngine } from '../lib/template-engine.js';
+import { renderScreenLose } from './lose.js';
+import { renderScreenWin } from './win.js';
+import { cards } from './cards.js';
+
 const PAIRS = [3, 6, 9];
 let startTimer;
 let moves = 0; // кол-во угаданных пар карт
-let hasFlippedCard = false; // перевернутая карта?
-let lockBoard = false; // ?
+let hasFlippedCard = false; // перевернутая карта
 let firstCard, secondCard;
 let timeCode;
 
-function renderScreenGame() {
+export function renderScreenGame() {
 	const app = emptyScreen();
 
 	window.application.blocks['newGame'] = renderNewGame;
@@ -121,7 +126,6 @@ function coupOneCard(children) {
 }
 
 function flipCard() {
-	// if (lockBoard) return;
 	if (this === firstCard) return;
 
 	const children = this.childNodes;
