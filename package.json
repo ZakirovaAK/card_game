@@ -14,7 +14,7 @@
     "prepare": "husky install",
     "lint:css": "stylelint ./style/**/*.css",
     "lint:ts": "tsc --noEmit",
-    "lint": "npm run lint:css"
+    "lint": "npm run lint:ts &&  npm run lint:css"
   },
   "repository": {
     "type": "git",

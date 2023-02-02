@@ -1,8 +1,8 @@
 import { emptyScreen } from './start-screen';
 import { templateEngine } from '../lib/template-engine.js';
-import { renderScreenLose } from './lose.js';
-import { renderScreenWin } from './win.js';
-import { cards } from './cards.js';
+import { renderScreenLose } from './lose';
+import { renderScreenWin } from './win';
+import { cards } from './cards';
 
 const PAIRS: number[] = [3, 6, 9];
 let startTimer: ReturnType<typeof setInterval>;
@@ -86,8 +86,6 @@ function coupCards() {
 	});
 }
 
-// type cardValues: ReturnType<typeof cards>;
-
 type cardType = {
 	tag: string;
 	cls: string;
@@ -131,7 +129,7 @@ function renderCards() {
 	});
 }
 
-function coupOneCard(children: NodeListOf<ChildNode>) {
+function coupOneCard(children: HTMLCollection) {
 	// переворачиваем карту
 	for (let index = 0; index < children.length; index++) {
 		const element = children[index];
@@ -147,7 +145,7 @@ function coupOneCard(children: NodeListOf<ChildNode>) {
 function flipCard(this: HTMLElement) {
 	if (this === firstCard) return;
 
-	const children: NodeListOf<ChildNode> = this.childNodes;
+	const children: HTMLCollection = this.children;
 	// переворачиваем одну карту
 	coupOneCard(children);
 
@@ -156,6 +154,8 @@ function flipCard(this: HTMLElement) {
 		firstCard = this;
 		return;
 	}
+	console.log('firstCard', firstCard);
+	console.log('secondCard', secondCard);
 
 	secondCard = this;
 
@@ -187,8 +187,6 @@ function disableCards() {
 	console.log('disable');
 	//обнуляем карты
 	hasFlippedCard = false;
-	firstCard = new HTMLElement();
-	secondCard = new HTMLElement();
 	moves += 1;
 	if (moves === PAIRS[Number(window.application.level) - 1]) {
 		// остановка таймера!!!!

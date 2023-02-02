@@ -1,4 +1,4 @@
-import { renderScreenGame } from './game.js';
+import { renderScreenGame } from './game';
 import { templateEngine } from '../lib/template-engine.js';
 /* eslint-disable no-unused-vars */
 const LEVELS = ['easy_level', 'medium_level', 'hard_level'];
@@ -7,29 +7,9 @@ export function emptyScreen() {
 	// очистка экрана
 	const app = document.querySelector('.container') as HTMLElement;
 	app.textContent = '';
-	// return app;
 }
 
-// function renderBlockLevels(levelsBox: HTMLElement) {
-// 	for (let index = 1; index <= 3; index++) {
-// 		const level = document.createElement('input') as HTMLInputElement;
-// 		level.classList.add('level-input');
-// 		level.type = 'radio';
-// 		level.id = LEVELS[index - 1];
-// 		level.value = index.toString();
-
-// 		const levelLabel = document.createElement('label') as HTMLLabelElement;
-// 		levelLabel.textContent = index.toString();
-// 		levelLabel.for = LEVELS[index - 1];
-// 		levelLabel.classList.add('level-label');
-
-// 		levelsBox.appendChild(level);
-// 		levelsBox.appendChild(levelLabel);
-// 	}
-// }
-
 export function renderScreenGameLevel() {
-	// const app = emptyScreen();
 	emptyScreen();
 	const app = document.querySelector('.container') as HTMLElement;
 
@@ -42,11 +22,6 @@ export function renderScreenGameLevel() {
 	const header = document.createElement('h1');
 	header.textContent = 'Выбери сложность';
 	header.classList.add('level_header', 'element');
-
-	// const levelsBox = document.createElement('div');
-	// levelsBox.classList.add('level_select_div', 'element');
-
-	// renderBlockLevels(levelsBox);
 
 	const divLevel = document.createElement('div');
 	divLevel.classList.add('element', 'elements__box');
@@ -72,7 +47,6 @@ export function renderScreenGameLevel() {
 			// загрузка экрана игры
 			window.application.screens['game'] = renderScreenGame;
 			renderScreenGame();
-			// window.application.renderScreen('game');
 		} else {
 			// вывод сообщения о том, что нужно выбрать уровень игры
 			errorBlock.classList.remove('hidden__block');
@@ -81,7 +55,6 @@ export function renderScreenGameLevel() {
 
 	form.appendChild(header);
 	form.appendChild(templateEngine(levelScreenTemplate()));
-	// form.appendChild(levelsBox);
 	form.appendChild(divLevel);
 
 	section.appendChild(form);

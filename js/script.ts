@@ -1,5 +1,5 @@
 import '../style/style.css';
-import { renderScreenGameLevel } from './start-screen.js';
+import { renderScreenGameLevel } from './start-screen';
 
 type ScreenName = 'gameLevel' | 'game' | 'lose' | 'win';
 
