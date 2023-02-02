@@ -1,34 +1,37 @@
 import { renderScreenGame } from './game.js';
+import { templateEngine } from '../lib/template-engine.js';
 /* eslint-disable no-unused-vars */
 const LEVELS = ['easy_level', 'medium_level', 'hard_level'];
 
 export function emptyScreen() {
 	// очистка экрана
-	const app = document.querySelector('.container');
+	const app = document.querySelector('.container') as HTMLElement;
 	app.textContent = '';
-	return app;
+	// return app;
 }
 
-function renderBlockLevels(levelsBox) {
-	for (let index = 1; index <= 3; index++) {
-		const level = document.createElement('input');
-		level.classList.add('level-input');
-		level.type = 'radio';
-		level.id = LEVELS[index - 1];
-		level.value = index;
+// function renderBlockLevels(levelsBox: HTMLElement) {
+// 	for (let index = 1; index <= 3; index++) {
+// 		const level = document.createElement('input') as HTMLInputElement;
+// 		level.classList.add('level-input');
+// 		level.type = 'radio';
+// 		level.id = LEVELS[index - 1];
+// 		level.value = index.toString();
 
-		const levelLabel = document.createElement('label');
-		levelLabel.textContent = index;
-		levelLabel.for = LEVELS[index - 1];
-		levelLabel.classList.add('level-label');
+// 		const levelLabel = document.createElement('label') as HTMLLabelElement;
+// 		levelLabel.textContent = index.toString();
+// 		levelLabel.for = LEVELS[index - 1];
+// 		levelLabel.classList.add('level-label');
 
-		levelsBox.appendChild(level);
-		levelsBox.appendChild(levelLabel);
-	}
-}
+// 		levelsBox.appendChild(level);
+// 		levelsBox.appendChild(levelLabel);
+// 	}
+// }
 
 export function renderScreenGameLevel() {
-	const app = emptyScreen();
+	// const app = emptyScreen();
+	emptyScreen();
+	const app = document.querySelector('.container') as HTMLElement;
 
 	const section = document.createElement('section');
 	section.classList.add('screen', 'screen-level');
@@ -40,10 +43,10 @@ export function renderScreenGameLevel() {
 	header.textContent = 'Выбери сложность';
 	header.classList.add('level_header', 'element');
 
-	const levelsBox = document.createElement('div');
-	levelsBox.classList.add('level_select_div', 'element');
+	// const levelsBox = document.createElement('div');
+	// levelsBox.classList.add('level_select_div', 'element');
 
-	renderBlockLevels(levelsBox);
+	// renderBlockLevels(levelsBox);
 
 	const divLevel = document.createElement('div');
 	divLevel.classList.add('element', 'elements__box');
@@ -77,7 +80,8 @@ export function renderScreenGameLevel() {
 	});
 
 	form.appendChild(header);
-	form.appendChild(levelsBox);
+	form.appendChild(templateEngine(levelScreenTemplate()));
+	// form.appendChild(levelsBox);
 	form.appendChild(divLevel);
 
 	section.appendChild(form);
@@ -89,13 +93,63 @@ export function renderScreenGameLevel() {
 		item.addEventListener('click', clickHandler);
 	});
 
-	function clickHandler(e) {
+	function clickHandler(e: Event) {
 		// убираем выделение кнопки выбора уровня у кнопок
 		levelElems.forEach((item) => {
 			item.classList.remove('level_label--active');
 		});
-		e.target.classList.add('level_label--active');
-		window.application.level = +e.target.textContent;
-		errorBlock.classList.add('hidden__block');
+		if (e.target instanceof HTMLElement) {
+			e.target.classList.add('level_label--active');
+			window.application.level = e.target.textContent || '';
+			errorBlock.classList.add('hidden__block');
+		}
 	}
+}
+
+function levelScreenTemplate() {
+	return {
+		tag: 'div',
+		cls: ['level_select_div', 'element'],
+		content: [
+			{
+				tag: 'input',
+				cls: 'level-input',
+				type: 'radio',
+				id: '1',
+				text: '1',
+			},
+			{
+				tag: 'label',
+				cls: 'level-label',
+				for: '1',
+				text: '1',
+			},
+			{
+				tag: 'input',
+				cls: 'level-input',
+				type: 'radio',
+				id: '2',
+				text: '2',
+			},
+			{
+				tag: 'label',
+				cls: 'level-label',
+				for: '2',
+				text: '2',
+			},
+			{
+				tag: 'input',
+				cls: 'level-input',
+				type: 'radio',
+				id: '3',
+				text: '3',
+			},
+			{
+				tag: 'label',
+				cls: 'level-label',
+				for: '3',
+				text: '3',
+			},
+		],
+	};
 }
