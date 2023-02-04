@@ -8,10 +8,15 @@ const mode =
 	process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
-	entry: './js/script.js',
+	entry: './js/script.ts',
 	mode,
 	module: {
 		rules: [
+			{
+				test: /\.ts$/,
+				use: 'ts-loader',
+				exclude: /node_modules/, // исключаем
+			},
 			{ test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] }, // 'style-loader'
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -36,6 +41,9 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 		clean: true,
+	},
+	resolve: {
+		extensions: ['.ts', '.js'],
 	},
 	optimization: {
 		minimizer: ['...', new CssMinimizerPlugin()],

@@ -1,7 +1,8 @@
 import { emptyScreen } from './start-screen';
 
-export function renderScreenLose() {
-	const app = emptyScreen();
+export function renderScreenWin() {
+	emptyScreen();
+	const app = document.querySelector('.container') as HTMLElement;
 
 	const section = document.createElement('section');
 	section.classList.add('screen', 'screen_result-game');
@@ -10,7 +11,7 @@ export function renderScreenLose() {
 	form.classList.add('form_result-game');
 	// TODO картинка
 	const header = document.createElement('h1');
-	header.textContent = 'Вы проиграли!';
+	header.textContent = 'Вы выйграли!';
 	header.classList.add('header', 'header_result-game', 'element');
 
 	const timeBox = document.createElement('div');

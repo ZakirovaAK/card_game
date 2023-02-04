@@ -1,26 +1,29 @@
 import { emptyScreen } from './start-screen';
 import { templateEngine } from '../lib/template-engine.js';
-import { renderScreenLose } from './lose.js';
-import { renderScreenWin } from './win.js';
-import { cards } from './cards.js';
+import { renderScreenLose } from './lose';
+import { renderScreenWin } from './win';
+import { cards } from './cards';
 
-const PAIRS = [3, 6, 9];
-let startTimer;
+const PAIRS: number[] = [3, 6, 9];
+let startTimer: ReturnType<typeof setInterval>;
 let moves = 0; // кол-во угаданных пар карт
-let hasFlippedCard = false; // перевернутая карта
-let firstCard, secondCard;
-let timeCode;
+let hasFlippedCard: boolean = false; // перевернутая карта
+let firstCard: HTMLElement, secondCard: HTMLElement;
+let timeCode: string;
 
 export function renderScreenGame() {
-	const app = emptyScreen();
+	emptyScreen();
+	const app = document.querySelector('.container') as HTMLElement;
 
 	window.application.blocks['newGame'] = renderNewGame;
 	window.application.blocks['cards'] = renderCards;
 
 	app.appendChild(templateEngine(gameScreenTemplate()));
 
-	const gameScreen = document.querySelector('.game__screen');
-	const headerScreen = document.querySelector('.game__screen-header');
+	const gameScreen = document.querySelector('.game__screen') as HTMLElement;
+	const headerScreen = document.querySelector(
+		'.game__screen-header'
+	) as HTMLElement;
 
 	headerScreen.appendChild(templateEngine(playNewGameTemplate()));
 
@@ -29,7 +32,8 @@ export function renderScreenGame() {
 }
 
 function renderNewGame() {
-	document.querySelector('.game__button').addEventListener('click', (event) => {
+	const gameButton = document.querySelector('.game__button') as HTMLElement;
+	gameButton.addEventListener('click', (event) => {
 		event.preventDefault();
 
 		window.application.level = '';
@@ -53,7 +57,7 @@ function timer() {
 }
 
 function gameWatch() {
-	const gameTimer = document.querySelector('.timer__degits');
+	const gameTimer = document.querySelector('.timer__degits') as HTMLElement;
 
 	let milliseconds = 0;
 
@@ -82,13 +86,30 @@ function coupCards() {
 	});
 }
 
+type cardType = {
+	tag: string;
+	cls: string;
+	attrs: {
+		'data-id': string;
+	};
+	content: {
+		tag: string;
+		cls: string[];
+		attrs: {
+			width: string;
+			src: string;
+			'data-id'?: string;
+		};
+	}[];
+};
+
 function renderCards() {
 	timer();
 
 	// все карты
-	let allCardValues = cards;
+	let allCardValues: cardType[] = cards;
 	// кол-во пар карт
-	const numberOfCards = PAIRS[window.application.level - 1];
+	const numberOfCards = PAIRS[Number(window.application.level) - 1];
 	// перемешивание карт
 	let cardValues2 = shuffleCards(allCardValues);
 
@@ -96,23 +117,19 @@ function renderCards() {
 	cardValues2.push(...cardValues2);
 	cardValues2 = shuffleCards(cardValues2);
 
-	// let cardValues2 = getRandomCards(numberOfCards, allCardValues);
-	// cardValues2.push(...cardValues2);
-	// cardValues2 = shuffleCards(cardValues2);
+	const cardsWrapper = document.querySelector('.cards__wrapper') as HTMLElement;
 
-	const cardsWrapper = document.querySelector('.cards__wrapper');
-
-	cardValues2.forEach((card) => {
+	cardValues2.forEach((card: cardType) => {
 		cardsWrapper.appendChild(templateEngine(card));
 	});
 
-	let playCards = document.querySelectorAll('.card__item');
+	let playCards: NodeListOf<Element> = document.querySelectorAll('.card__item');
 	playCards.forEach((playCard) => {
 		playCard.addEventListener('click', flipCard);
 	});
 }
 
-function coupOneCard(children) {
+function coupOneCard(children: HTMLCollection) {
 	// переворачиваем карту
 	for (let index = 0; index < children.length; index++) {
 		const element = children[index];
@@ -125,10 +142,10 @@ function coupOneCard(children) {
 	}
 }
 
-function flipCard() {
+function flipCard(this: HTMLElement) {
 	if (this === firstCard) return;
 
-	const children = this.childNodes;
+	const children: HTMLCollection = this.children;
 	// переворачиваем одну карту
 	coupOneCard(children);
 
@@ -137,6 +154,8 @@ function flipCard() {
 		firstCard = this;
 		return;
 	}
+	console.log('firstCard', firstCard);
+	console.log('secondCard', secondCard);
 
 	secondCard = this;
 
@@ -144,10 +163,6 @@ function flipCard() {
 }
 
 function checkCard() {
-	// console.log('checkCard');
-	// console.log(firstCard.dataset.id);
-	// console.log(secondCard.dataset.id);
-
 	if (firstCard.dataset.id === secondCard.dataset.id) {
 		disableCards();
 		return;
@@ -172,10 +187,8 @@ function disableCards() {
 	console.log('disable');
 	//обнуляем карты
 	hasFlippedCard = false;
-	firstCard = undefined;
-	secondCard = undefined;
 	moves += 1;
-	if (moves === PAIRS[window.application.level - 1]) {
+	if (moves === PAIRS[Number(window.application.level) - 1]) {
 		// остановка таймера!!!!
 		clearInterval(startTimer);
 		console.log('вы выйграли!!!');
@@ -189,20 +202,10 @@ function disableCards() {
 	}
 }
 
-function shuffleCards(array) {
+function shuffleCards(array: cardType[]) {
 	for (let i = array.length - 1; i > 0; i--) {
 		let randomIndex = Math.floor(Math.random() * (i + 1));
 		[array[i], array[randomIndex]] = [array[randomIndex], array[i]];
-	}
-	return array;
-}
-
-function getRandomCards(pairsOfCards, cardsArray) {
-	let array = [];
-	for (let i = 0; i < pairsOfCards; i++) {
-		let randomIndex = Math.floor(Math.random() * (cardsArray.length - 1));
-		console.log('randomIndex ', randomIndex);
-		array[i] = cardsArray[randomIndex];
 	}
 	return array;
 }

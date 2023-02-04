@@ -8,7 +8,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '6C',
 					width: '95',
@@ -34,7 +34,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '6D',
 					width: '95',
@@ -60,7 +60,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '6H',
 					width: '95',
@@ -86,7 +86,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '6S',
 					width: '95',
@@ -112,7 +112,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '7C',
 					width: '95',
@@ -138,7 +138,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '7D',
 					width: '95',
@@ -164,7 +164,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '7H',
 					width: '95',
@@ -190,7 +190,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '7S',
 					width: '95',
@@ -216,7 +216,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '8C',
 					width: '95',
@@ -242,7 +242,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '8D',
 					width: '95',
@@ -268,7 +268,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '8H',
 					width: '95',
@@ -294,7 +294,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '8S',
 					width: '95',
@@ -320,7 +320,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '9C',
 					width: '95',
@@ -346,7 +346,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '9D',
 					width: '95',
@@ -372,7 +372,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '9H',
 					width: '95',
@@ -398,7 +398,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': '9S',
 					width: '95',
@@ -424,7 +424,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'AC',
 					width: '95',
@@ -450,7 +450,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'AD',
 					width: '95',
@@ -476,7 +476,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'AH',
 					width: '95',
@@ -502,7 +502,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'AS',
 					width: '95',
@@ -528,7 +528,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'JC',
 					width: '95',
@@ -554,7 +554,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'JD',
 					width: '95',
@@ -580,7 +580,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'JH',
 					width: '95',
@@ -606,7 +606,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'JS',
 					width: '95',
@@ -632,7 +632,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'KC',
 					width: '95',
@@ -658,7 +658,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'KD',
 					width: '95',
@@ -684,7 +684,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'KH',
 					width: '95',
@@ -710,7 +710,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'KS',
 					width: '95',
@@ -736,7 +736,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'QC',
 					width: '95',
@@ -762,7 +762,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'QD',
 					width: '95',
@@ -788,7 +788,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'QH',
 					width: '95',
@@ -814,7 +814,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'QS',
 					width: '95',
@@ -840,7 +840,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'TC',
 					width: '95',
@@ -866,7 +866,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'TD',
 					width: '95',
@@ -892,7 +892,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'TH',
 					width: '95',
@@ -918,7 +918,7 @@ export const cards = [
 		content: [
 			{
 				tag: 'img',
-				cls: 'card__item-front',
+				cls: ['card__item-front'],
 				attrs: {
 					'data-id': 'TS',
 					width: '95',
