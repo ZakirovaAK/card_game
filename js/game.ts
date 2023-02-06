@@ -1,10 +1,13 @@
 import { emptyScreen } from './start-screen';
 import { templateEngine } from '../lib/template-engine.js';
-import { renderScreenLose } from './lose';
-import { renderScreenWin } from './win';
 import { cards } from './cards';
 
 const PAIRS: number[] = [3, 6, 9];
+const LEVEL: string[] = [
+	'cards__wrapper__easy',
+	'cards__wrapper__medium',
+	'cards__wrapper__hard',
+];
 let startTimer: ReturnType<typeof setInterval>;
 let moves = 0; // кол-во угаданных пар карт
 let hasFlippedCard: boolean = false; // перевернутая карта
@@ -19,6 +22,8 @@ export function renderScreenGame() {
 	window.application.blocks['cards'] = renderCards;
 
 	app.appendChild(templateEngine(gameScreenTemplate()));
+	app.appendChild(templateEngine(winScreenTemplate()));
+	app.appendChild(templateEngine(loseScreenTemplate()));
 
 	const gameScreen = document.querySelector('.game__screen') as HTMLElement;
 	const headerScreen = document.querySelector(
@@ -119,6 +124,9 @@ function renderCards() {
 
 	const cardsWrapper = document.querySelector('.cards__wrapper') as HTMLElement;
 
+	// красивое расположение карт
+	cardsWrapper.classList.add(LEVEL[Number(window.application.level) - 1]);
+
 	cardValues2.forEach((card: cardType) => {
 		cardsWrapper.appendChild(templateEngine(card));
 	});
@@ -154,10 +162,10 @@ function flipCard(this: HTMLElement) {
 		firstCard = this;
 		return;
 	}
-	console.log('firstCard', firstCard);
-	console.log('secondCard', secondCard);
 
 	secondCard = this;
+	console.log('firstCard', firstCard);
+	console.log('secondCard', secondCard);
 
 	checkCard();
 }
@@ -175,9 +183,22 @@ function checkCard() {
 	console.log('вы проиграли');
 	// looseGame(); // Окошко вы проиграли
 	moves = 0;
+	hasFlippedCard = false;
 	// Экран проигрыша
-	window.application.screens['lose'] = renderScreenLose;
-	window.application.renderScreen('lose');
+	// модальное окно Проигрыша
+	console.log('время ', window.application.gameTime);
+	console.log(typeof window.application.gameTime);
+	const modalLose = document.querySelector('.modal__lose') as HTMLElement;
+	const time = modalLose.querySelector('.time') as HTMLElement;
+	time.textContent = window.application.gameTime;
+	modalLose.style.display = 'block';
+
+	// console.log('время ', window.application.gameTime);
+	// 	console.log(typeof window.application.gameTime);
+	// 	const modalWin = document.querySelector('.modal__win') as HTMLElement;
+	// 	const time = modalWin.querySelector('.time') as HTMLElement;
+	// 	time.textContent = window.application.gameTime;
+	// 	modalWin.style.display = 'block';
 }
 
 function disableCards() {
@@ -197,8 +218,13 @@ function disableCards() {
 		// сохранение времени
 		window.application.gameTime = timeCode;
 		// Экран выйгрыша
-		window.application.screens['win'] = renderScreenWin;
-		window.application.renderScreen('win');
+		// модальное окно Выйгрыша
+		console.log('время ', window.application.gameTime);
+		console.log(typeof window.application.gameTime);
+		const modalWin = document.querySelector('.modal__win') as HTMLElement;
+		const time = modalWin.querySelector('.time') as HTMLElement;
+		time.textContent = window.application.gameTime;
+		modalWin.style.display = 'block';
 	}
 }
 
@@ -255,6 +281,122 @@ function gameScreenTemplate() {
 					{
 						tag: 'div',
 						cls: 'cards__wrapper',
+					},
+				],
+			},
+		],
+	};
+}
+
+function winScreenTemplate() {
+	return {
+		tag: 'div',
+		cls: ['modal__win', 'modal'],
+		content: [
+			{
+				tag: 'section',
+				cls: 'modal-content',
+				content: [
+					{
+						tag: 'form',
+						cls: 'form_result-game',
+						content: [
+							{
+								tag: 'img',
+								cls: ['form_result-game__img'],
+								attrs: {
+									width: '96',
+									src: './static/img/win.png',
+								},
+							},
+							{
+								tag: 'h1',
+								text: 'Вы выйграли!',
+								cls: ['header', 'header_result-game'],
+							},
+							{
+								tag: 'div',
+								content: [
+									{
+										tag: 'h3',
+										text: 'Затраченное время:',
+									},
+									{
+										tag: 'h1',
+										cls: ['header', 'time'],
+										text: window.application.gameTime,
+									},
+								],
+							},
+							{
+								tag: 'div',
+								content: [
+									{
+										tag: 'button',
+										cls: ['btn_level'],
+										text: 'Играть снова',
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+		],
+	};
+}
+
+function loseScreenTemplate() {
+	return {
+		tag: 'div',
+		cls: ['modal', 'modal__lose'],
+		content: [
+			{
+				tag: 'section',
+				cls: 'modal-content',
+				content: [
+					{
+						tag: 'form',
+						cls: 'form_result-game',
+						content: [
+							{
+								tag: 'img',
+								cls: ['form_result-game__img'],
+								attrs: {
+									width: '90',
+									src: './static/img/lose.png',
+								},
+							},
+							{
+								tag: 'h1',
+								text: 'Вы проиграли!',
+								cls: ['header', 'header_result-game'],
+							},
+							{
+								tag: 'div',
+								content: [
+									{
+										tag: 'h3',
+										text: 'Затраченное время:',
+									},
+									{
+										tag: 'h1',
+										cls: ['header', 'time'],
+										text: window.application.gameTime,
+									},
+								],
+							},
+							{
+								tag: 'div',
+								content: [
+									{
+										tag: 'button',
+										cls: ['btn_level'],
+										text: 'Играть снова',
+									},
+								],
+							},
+						],
 					},
 				],
 			},
