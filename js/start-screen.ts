@@ -1,7 +1,5 @@
 import { renderScreenGame } from './game';
 import { templateEngine } from '../lib/template-engine.js';
-/* eslint-disable no-unused-vars */
-const LEVELS = ['easy_level', 'medium_level', 'hard_level'];
 
 export function emptyScreen() {
 	// очистка экрана

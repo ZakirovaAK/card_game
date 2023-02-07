@@ -179,15 +179,27 @@ body {
 
 .modal {
 	display: none; /* Скрыто по умолчанию */
-	height: 50vh;
-	width: 50vh;
+	width: 100%; /* Полная ширина */
+	height: 100%; /* Полная высота */
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	margin: auto;
+	background-color: rgb(0 0 0 / 40%); /* Черный с непрозрачностью */
+}
+
+.modal-content {
 	background-color: #87cefa;
+	position: absolute;
+	height: 50vh;
+	width: 50vh;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
 	border-radius: 8px;
 }
 

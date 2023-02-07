@@ -14,6 +14,23 @@ let hasFlippedCard: boolean = false; // перевернутая карта
 let firstCard: HTMLElement, secondCard: HTMLElement;
 let timeCode: string;
 
+type cardType = {
+	tag: string;
+	cls: string;
+	attrs: {
+		'data-id': string;
+	};
+	content: {
+		tag: string;
+		cls: string[];
+		attrs: {
+			width: string;
+			src: string;
+			'data-id'?: string;
+		};
+	}[];
+};
+
 export function renderScreenGame() {
 	emptyScreen();
 	const app = document.querySelector('.container') as HTMLElement;
@@ -91,30 +108,14 @@ function coupCards() {
 	});
 }
 
-type cardType = {
-	tag: string;
-	cls: string;
-	attrs: {
-		'data-id': string;
-	};
-	content: {
-		tag: string;
-		cls: string[];
-		attrs: {
-			width: string;
-			src: string;
-			'data-id'?: string;
-		};
-	}[];
-};
-
 function renderCards() {
 	timer();
 
 	// все карты
 	let allCardValues: cardType[] = cards;
+	const levelNum: number = Number(window.application.level) - 1;
 	// кол-во пар карт
-	const numberOfCards = PAIRS[Number(window.application.level) - 1];
+	const numberOfCards = PAIRS[levelNum];
 	// перемешивание карт
 	let cardValues2 = shuffleCards(allCardValues);
 
@@ -125,7 +126,7 @@ function renderCards() {
 	const cardsWrapper = document.querySelector('.cards__wrapper') as HTMLElement;
 
 	// красивое расположение карт
-	cardsWrapper.classList.add(LEVEL[Number(window.application.level) - 1]);
+	cardsWrapper.classList.add(LEVEL[levelNum]);
 
 	cardValues2.forEach((card: cardType) => {
 		cardsWrapper.appendChild(templateEngine(card));
@@ -176,59 +177,43 @@ function checkCard() {
 		return;
 	}
 
-	// остановка таймера!!!!
+	// остановка таймера
 	clearInterval(startTimer);
 	// сохранение времени
 	window.application.gameTime = timeCode;
 	console.log('вы проиграли');
-	// looseGame(); // Окошко вы проиграли
 	moves = 0;
 	hasFlippedCard = false;
-	// Экран проигрыша
 	// модальное окно Проигрыша
-	console.log('время ', window.application.gameTime);
-	console.log(typeof window.application.gameTime);
-	const modalLose = document.querySelector('.modal__lose') as HTMLElement;
-	const time = modalLose.querySelector('.time') as HTMLElement;
-	time.textContent = window.application.gameTime;
-	modalLose.style.display = 'block';
+	modalWindowView('.modal__lose');
+}
 
-	// console.log('время ', window.application.gameTime);
-	// 	console.log(typeof window.application.gameTime);
-	// 	const modalWin = document.querySelector('.modal__win') as HTMLElement;
-	// 	const time = modalWin.querySelector('.time') as HTMLElement;
-	// 	time.textContent = window.application.gameTime;
-	// 	modalWin.style.display = 'block';
+function modalWindowView(result: string) {
+	const modalWin = document.querySelector(result) as HTMLElement;
+	const time = modalWin.querySelector('.time') as HTMLElement;
+	time.textContent = window.application.gameTime;
+	modalWin.style.display = 'block';
 }
 
 function disableCards() {
-	// для firstCard и secondCard убираем подписку на click через метод
+	// для firstCard и secondCard убираем подписку на click
 	firstCard.removeEventListener('click', flipCard);
 	secondCard.removeEventListener('click', flipCard);
-	console.log('disable');
 	//обнуляем карты
 	hasFlippedCard = false;
 	moves += 1;
 	if (moves === PAIRS[Number(window.application.level) - 1]) {
-		// остановка таймера!!!!
+		// остановка таймера
 		clearInterval(startTimer);
-		console.log('вы выйграли!!!');
-		// вы выйграли
 		moves = 0;
 		// сохранение времени
 		window.application.gameTime = timeCode;
-		// Экран выйгрыша
 		// модальное окно Выйгрыша
-		console.log('время ', window.application.gameTime);
-		console.log(typeof window.application.gameTime);
-		const modalWin = document.querySelector('.modal__win') as HTMLElement;
-		const time = modalWin.querySelector('.time') as HTMLElement;
-		time.textContent = window.application.gameTime;
-		modalWin.style.display = 'block';
+		modalWindowView('.modal__win');
 	}
 }
 
-function shuffleCards(array: cardType[]) {
+export function shuffleCards(array: cardType[]) {
 	for (let i = array.length - 1; i > 0; i--) {
 		let randomIndex = Math.floor(Math.random() * (i + 1));
 		[array[i], array[randomIndex]] = [array[randomIndex], array[i]];
