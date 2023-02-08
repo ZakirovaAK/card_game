@@ -14,7 +14,7 @@ let hasFlippedCard: boolean = false; // перевернутая карта
 let firstCard: HTMLElement, secondCard: HTMLElement;
 let timeCode: string;
 
-type cardType = {
+export type cardType = {
 	tag: string;
 	cls: string;
 	attrs: {
